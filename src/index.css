@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Farver som "R G B"-tal, så Tailwind kan lægge gennemsigtighed på (bg-card/60 osv.) */
+:root {
+  color-scheme: light;
+
+  --board: 243 246 253; /* sidens baggrund */
+  --card: 255 255 255;
+  --paper: 31 42 68; /* tekst */
+  --boardline: 228 234 247; /* bløde felter/piller */
+  --accent: 79 134 234;
+  --violet: 124 108 240;
+  --signal-low: 76 195 138;
+  --signal-mid: 245 185 66;
+  --signal-high: 240 101 90;
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-board text-paper font-body antialiased;
+    overscroll-behavior-y: none;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-accent/30;
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
